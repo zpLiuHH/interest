@@ -2,7 +2,7 @@ package com.interest.service.impl;
 
 import com.interest.dao.MsgRecordsDao;
 import com.interest.model.entity.MsgRecordEntity;
-import com.interest.model.entity.PageResult;
+import com.interest.model.utils.PageResult;
 import com.interest.model.response.MsgRecordResponse;
 import com.interest.service.MsgRecordsService;
 import com.interest.utils.SecurityAuthenUtil;
@@ -41,7 +41,7 @@ public class MsgRecordsServiceImpl implements MsgRecordsService {
         List<MsgRecordResponse> list = msgRecordsDao.getMsgListByUserid(userid,pageSize,start);
         int size = msgRecordsDao.getMsgSizeByUserid(userid);
 
-        PageResult pageResult = new PageResult();
+        PageResult<MsgRecordResponse> pageResult = new PageResult<>();
         pageResult.setTotalCount(size);
         pageResult.setData(list);
         return pageResult;
